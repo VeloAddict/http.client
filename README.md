@@ -1,9 +1,9 @@
 # http.client
 An HTTP client wrapped around Axios
 
-## How to use
+## How to use examples
 
-```
+```js
 var requests = [
 	httpClient.get('/api/v1/endpoint1'),
 	httpClient.get('/api/v1/endpoint2')
@@ -28,7 +28,7 @@ function cancelRequests() {
 
 ---------------------------------------------------------------------------------
 
-```
+```js
 var request = httpClient.get/delete/head/options(
 	'/api/v1/endpoint',
 	{
@@ -50,7 +50,7 @@ request.cancel();
 
 ---------------------------------------------------------------------------------
 
-```
+```js
 var request = httpClient.post/put/patch(
 	'/api/v1/endpoint',
 	new URLSearchParams(new FormData(document.getElementById('my-form-id'))),
@@ -73,7 +73,7 @@ request.cancel();
 
 ---------------------------------------------------------------------------------
 
-```
+```js
 var polling = httpClient.poll(
 	'/api/v1/endpoint',
 	{
