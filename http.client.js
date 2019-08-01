@@ -27,7 +27,6 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 		get: function () { return build('get', ...arguments); },
 		delete: function () { return build('delete', ...arguments); },
 		head: function () { return build('head', ...arguments); },
-		delete: function () { return build('delete', ...arguments); },
 		options: function () { return build('options', ...arguments); },
 		post: function () { return build('post', ...arguments); },
 		put: function () { return build('put', ...arguments); },
@@ -74,7 +73,7 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 			minTimeout: 1000,  // starting value for the timeout in milliseconds
 			maxTimeout: 64000, // maximum length of time between requests
 			multiplier: 2,     // if set to 2, timerInterval will double each time the response hasn't changed (up to maxTimeout)
-			maxCalls: 0,       // maximum number of calls. 0 = no limit.
+			maxCalls: 0,       // maximum number of calls. 0 = no limit
 			autoStop: 0,       // automatically stop requests after this many returns of the same data. 0 = disabled
 			runAtOnce: false   // whether to fire initially or wait
 		};
