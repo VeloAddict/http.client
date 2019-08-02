@@ -98,7 +98,7 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 		}
 		
 		function makeRequest() {
-			var data= (typeof config.data == 'function' ? config.data() : config.data);
+			var data = (typeof config.data == 'function' ? config.data() : config.data);
 			instance({
 				method: method,
 				url,
@@ -107,12 +107,12 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 				cancelToken: call.token
 			})
 				.then(function (response) {
-					successCallback(response);
 					handleSuccessResponse(response);
+					successCallback(response);
 				})
 				.catch(function (error) {
-					failureCallback(error);
 					handleErrorResponse();
+					failureCallback(error);
 				});
 			
 			function handleSuccessResponse(response) {
