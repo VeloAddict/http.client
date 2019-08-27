@@ -10,14 +10,14 @@ var requests = [
 ];
 
 httpClient.all(requests)
-.then(httpClient.spread(function (response1, response2) {
-	console.log(response1);
-	console.log(response2);
-}))
-.catch(function (error) {
-	console.log(error);
-	cancelRequests();
-});
+	.then(httpClient.spread(function (response1, response2) {
+		console.log(response1);
+		console.log(response2);
+	}))
+	.catch(function (error) {
+		console.log(error);
+		cancelRequests();
+	});
 
 function cancelRequests() {
 	requests.forEach(function (request) {
