@@ -16,9 +16,10 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 		if (!isRedirecting) {
 			isRedirecting = true;
 			$.notifier.add({ text: response.data.errorMessage, type: 'warning' });
-			window.location = '/login';
+			window.location = '/login' + window.location.hash;
 		}
 	}, function (error) {
+		console.log(error);
 		return Promise.reject(error);
 	});
 	
@@ -111,7 +112,7 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 					successCallback(response);
 				})
 				.catch(function (error) {
-					handleErrorResponse();
+					handleErrorResponse(error);
 					failureCallback(error);
 				});
 			
@@ -143,7 +144,10 @@ define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], func
 				timer = setTimeout(makeRequest, timerInterval);
 			}
 			
-			function handleErrorResponse() {
+			function handleErrorResponse(error) {
+				if (httpClient.isCancel(error)) {
+					return;
+				}
 				stop();
 				timer = setTimeout(makeRequest, timerInterval);
 			}
