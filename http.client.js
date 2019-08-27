@@ -1,26 +1,11 @@
 define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], function (axios, qs) {
 	patchPromise();
-	var isRedirecting = false;
 	var instance = axios.create({
 		baseURL: '/',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 			'X-Requested-With': 'XMLHttpRequest'
 		}
-	});
-	instance.interceptors.response.use(function (response) {
-		if (!response.data.sessionExpired) {
-			return response;
-		}
-		app.isAuthenticated = false;
-		if (!isRedirecting) {
-			isRedirecting = true;
-			$.notifier.add({ text: response.data.errorMessage, type: 'warning' });
-			window.location = '/login' + window.location.hash;
-		}
-	}, function (error) {
-		console.log(error);
-		return Promise.reject(error);
 	});
 	
 	var httpClient = {
