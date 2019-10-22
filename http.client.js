@@ -8,7 +8,6 @@ define([
 	qs
 ) {
 	patchPromise();
-	var isRedirecting = false;
 	var instance = axios.create({
 		baseURL: '/',
 		headers: {
