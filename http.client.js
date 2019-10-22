@@ -1,5 +1,14 @@
-define(['axios', 'qs', 'url-search-params-polyfill', 'form-data-polyfill'], function (axios, qs) {
+define([
+	'axios',
+	'qs',
+	'url-search-params-polyfill',
+	'form-data-polyfill'
+], function (
+	axios,
+	qs
+) {
 	patchPromise();
+	var isRedirecting = false;
 	var instance = axios.create({
 		baseURL: '/',
 		headers: {
