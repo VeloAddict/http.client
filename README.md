@@ -72,7 +72,9 @@ request.cancel();
 ```js
 var request = httpClient.post/put/patch(
 	'/api/v1/endpoint',
-	new URLSearchParams(new FormData(document.getElementById('my-form-id'))),
+	{
+		inputName: inputValue
+	},
 	{
 		params: {
 			id: '1234567890'
