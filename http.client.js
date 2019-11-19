@@ -1,19 +1,11 @@
 define([
-	'axios',
-	'qs',
-	'url-search-params-polyfill',
-	'form-data-polyfill'
+	'axios'
 ], function (
-	axios,
-	qs
+	axios
 ) {
 	patchPromise();
 	var instance = axios.create({
-		baseURL: '/',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-			'X-Requested-With': 'XMLHttpRequest'
-		}
+		baseURL: '/'
 	});
 	
 	var httpClient = {
@@ -63,7 +55,7 @@ define([
 	function poll(url, config, successCallback, failureCallback) {
 		var defaults = {
 			method: 'get',     // method; get or post
-			data: null,        // hash of values to be passed to the page - e.g. { name: "John", greeting: "hello" } or function
+			data: null,        // hash of values to be passed to the request - e.g. { name: "John", greeting: "hello" } or function
 			minTimeout: 1000,  // starting value for the timeout in milliseconds
 			maxTimeout: 64000, // maximum length of time between requests
 			multiplier: 2,     // if set to 2, timerInterval will double each time the response hasn't changed (up to maxTimeout)
